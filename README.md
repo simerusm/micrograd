@@ -72,7 +72,7 @@
 **Summation Function (Weighted sum)**
 - The neuron calculates the weighted sum of inputs: 
 ```
-                        z = w1x1 + w2x2 + ... + wnxn + b
+                            z = w1x1 + w2x2 + ... + wnxn + b
 ```
 - This value, z, determines the neuron's pre-activation state (the value calculated by the neuron before the activation function is applied)
 
@@ -106,5 +106,19 @@
     - The activation function decides whether the judge rules in favor or against based on the total evidence
     - The output is the final verdict
 
+### Forward Propogation & Inference
+- Forward propagation is the process of passing input data through a neural network to compute an output (prediction)
+- It involves matrix multiplications, applying activation functions, and moving data from the input layer to the output layer'
+- Forward propagation is essentially what inference is
+    - During training: Forward propagation is followed by backpropagation, where gradients are calculated and weights are updated
+    - During inference: Only forward propagation happens—weights are fixed, and the network simply computes predictions
+- When you use ChatGPT, Gemini, or any AI model in production, you're interacting with inference
 
-
+### Backpropogation
+- Backpropagation (backward propagation of errors) is the process used to train neural networks by adjusting their weights to minimize error
+- It uses the chain rule of calculus to compute gradients and update weights through gradient descent (steepest derivative for multi-variable functions)
+- When dealing with multiple layers we:
+    - Compute loss at the output layer
+    - Propagate gradients backward through hidden layers (in between input and ouput)
+    - Adjust weights layer by layer
+- Backpropagation is how neural networks "learn" by adjusting weights to reduce prediction error
