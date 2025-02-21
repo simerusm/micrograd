@@ -97,7 +97,14 @@
         - Sum to 1: It guarantees that the sum of all output probabilities is equal to 1
         - This allows us to treat the outputs as the likelihood that the input belongs to each class
 
-
+**Analogy**
+- A neuron is like a judge making a decision
+    - The inputs are pieces of evidence
+    - The weights determine how important each piece of evidence is
+    - The bias is like a base level of leniency or strictness
+    - The summation is like adding up all the evidence
+    - The activation function decides whether the judge rules in favor or against based on the total evidence
+    - The output is the final verdict
 
 
 
