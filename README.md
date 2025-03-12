@@ -231,3 +231,23 @@ Here's how we do backpropogation and fill in the gradients of each node you see 
     - By the chain rule, you multiply the upstream gradient `x2\*w2` by `w2`
     - Thus the result is gradients `w2 = 0` and `x2 = 0.5` (note that this makes sense because the value of `x2` is 0, so incrementing `w2` by small amounts will essentially do nothing to the end result)
 - Repeat the above step for the others
+
+**Potential Issues**
+- An issue that we could face is if we're using a neuron more than once
+
+```
+a = Value(3.0, label = 'a')
+b = a + a; b.label = 'b'
+b.backward()
+```
+
+- Above, we see that `a` is used twice, so we're essentially using the same object to represent the children (it will only appear once because children is a set)
+- However, note that with the following code, the gradient of `a` wrt `b` will be 1.0, but if derive `b=2a` in our head we know that it should be 2.0
+
+```
+self.grad = 1.0 * out.grad
+other.grad = 1.0 * out.grad
+```
+
+- We can see that we're immediately overriding the change that we made to `self.grad` with `other.grad` becuse `self` and `other` are the same object (they both are Value `a` objects)
+- So, we need to introduce the additive gradient property and make the gradients additive
