@@ -28,3 +28,26 @@ def draw_dot(root: Value):
         dot.edge(str(id(n1)), str(id(n2)) + n2._op)
     
     return dot
+
+def calculate_gradient():
+    a = Value(2.0, label='a')
+    b = Value(-3.0, label='b')
+    c = Value(10.0, label='c')
+    e = a*b; e.label = 'e'
+    d = e + c; d.label = 'd'
+    f = Value(-2.0, label='f')
+    L = d * f; L.label = 'L'
+    L1 = L.data
+    
+    h = 0.0001
+    
+    a = Value(2.0, label='a')
+    b = Value(-3.0, label='b')
+    c = Value(10.0, label='c')
+    e = a*b; e.label = 'e'
+    d = e + c; d.label = 'd'
+    f = Value(-2.0, label='f')
+    L = d * f; L.label = 'L'
+    L2 = L.data + h
+    
+    return (L2 - L1) / h
