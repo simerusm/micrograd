@@ -16,7 +16,7 @@ def setup_nn():
     ys = [1.0, -1.0, -1.0, 1.0] # desired targets
     ypred = [n(x) for x in xs]
 
-def training_loop(loops: int, ypred: List[float], xs: List[List[float]], ys: List[float], n: MLP):
+def training_loop(loops: int, ypred: List[float], xs: List[List[float]], ys: List[float], n: MLP, learning_rate: float = 0.01):
     # draw_dot(n(x))
 
     for k in range(loops):
@@ -31,6 +31,6 @@ def training_loop(loops: int, ypred: List[float], xs: List[List[float]], ys: Lis
         
         # update
         for p in n.parameters():
-            p.data += -0.01 * p.grad
+            p.data += -learning_rate * p.grad
         
         # print(k, loss.data)
